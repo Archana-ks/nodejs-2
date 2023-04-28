@@ -2,24 +2,18 @@ const express = require("express")
 const fs = require("fs")
 const path = require("path");
 
-{/*
-  installation setup
-  1.npm init
-  2.npm i express
-  3.npm i nodemon
-*/}
 
 const data = [
     {
         id:"1",
         numberOfSeats:20,
         amenities:["AC","chairs","discolights"],
-        priceForAnHour:15000,
+        priceForAnHour:1500,
         ifBooked:"Booked",
         customerName:"Archana",
         date:"20-04-2023",
-        startTime:"20-april-2023 at 12am",
-        endTime:"21-april-2023 at 12pm",
+        startTime:"20-april-2023 at 12 am",
+        endTime:"21-april-2023 at 11 pm",
         RoomeId:11,
         RoomName:"Duplex"
     },
@@ -40,12 +34,12 @@ const data = [
         id:"3",
         numberOfSeats:60,
         amenities:["AC","chairs","discolights","internetAccess"],
-        priceForAnHour:7000,
+        priceForAnHour:1000,
         ifBooked:"Booked",
         customerName:"Sri",
         date:"05-04-2022",
-        startTime:"5-april-2022 at 12am",
-        endTime:"6-april-2022 at 12pm",
+        startTime:"5-april-2023 at 12 am",
+        endTime:"6-april-2023 at 11.30 pm",
         RoomeId:105,
         RoomName:"suite"
     },
@@ -66,15 +60,15 @@ const data = [
         id:"5",
         numberOfSeats:20,
         amenities:["AC","chairs","discolights","internetAccess"],
-        priceForAnHour:10000,
+        priceForAnHour:3000,
         ifBooked:"Booked",
         customerName:"Sri",
         date:"20-04-2023",
-        startTime:"20-april-2023 at 12am",
-        endTime:"21-april-2023 at 12pm",
+        startTime:"20-april-2023 at 12 am",
+        endTime:"21-april-2023 at 12 pm",
         RoomeId:107,
         RoomName:"Duplex"
-    },
+    }
 ]
 
 const app = express()
@@ -117,7 +111,7 @@ app.get("/hall/details/:id",(req,res)=>{
 
 //1.creating a room
 
-app.post("/hall/details/",(req,res)=>{
+app.post("/hall/details",(req,res)=>{
     const newHall ={
         id:data.length+1,
         numberOfSeats:req.body.numberOfSeats,
@@ -168,7 +162,8 @@ app.post("/hall/details/",(req,res)=>{
                     "StartTime":room.startTime,
                     "endTime":room.endTime
                 }
-            } else{
+            } 
+               else{
                 return{"RoomName":room.RoomName, "ifBooked":"vacant"}
             }
         })
@@ -201,3 +196,11 @@ app.post("/hall/details/",(req,res)=>{
 
 
 app.listen(5000, ()=>console.log(`server started in localhost:5000`))
+
+
+/*
+  installation setup
+  1.npm init
+  2.npm i express
+  3.npm i nodemon
+*/
